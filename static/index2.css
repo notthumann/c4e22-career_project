@@ -1,0 +1,65 @@
+body, html{
+    font-family: 'Montserrat', sans-serif;
+    margin:0px;
+}
+
+#headercontent{
+    margin:20px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+}
+.header{
+    font-size:18px;
+    padding: 15px 15px;
+    margin-right: 100px;
+    text-decoration:none;
+    color:#ABABAB
+}
+#home{
+    color:#448299;
+}
+#email{
+    margin-right:50px;
+    border: #448299 solid;
+    border-radius: 15px;
+    color: #448299;
+    padding: 10px 15px;
+}
+#txt{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    width:600px;
+    margin-right:250px;
+}
+#lttxt{
+    font-size:20px;
+}
+#bigtxt{
+    font-size: 50px;
+}
+#para{
+    width:450px;
+    color:#3b5056;
+    line-height: 30px;
+}
+#quiz{
+    font-size:20px;
+    border: #448299 solid;
+    border-radius: 15px;
+    padding: 20px 30px;
+    background-color: #448299;
+    color:#ffffff;
+    text-decoration: none;
+}
+#body2{
+    margin-top:0px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    height:600px;
+    background-color:#bcdae5;
+
+}
