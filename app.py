@@ -97,21 +97,28 @@ mlab.connect()
 # point_list = [0,10,0,10,0,10,10,0,10,0,10,0,10,0,0,10,0,10,0,10]
 # q = Question()
 # q.save()
-# for i in range (20):
-#   name = name_list[i]
-#   link = link_list[i]
-#   point = point_list[i]
-#   answer = Answer(name = name, link = link, point = point)
-#   answer.save()
-# q.update(push__question=answer)
-
-
-@app_route("/quiz",method = ["GET","POST"])
-def quiz():
-  if request.method == "GET":
-    return render_template("quiz.html")
-  elif request.method == "POST":
+# while True:
+#     i = (1,21)
+#     name = name_list[i-1]
+#     link = link_list[i-1]
+#     point = point_list[i-1]
+#     answer = Answer(name = name, link = link, point = point)
+#     answer.save()
+    
+#     q.update(push__question=answer)
     
 
+
+@app.route("/quiz")
+def quiz():
+    link_list = Answer.objects()
+    link_list_list = []
+    for i in range(0,20,2):
+      link1 = link_list[i]
+      link2 = link_list[i+1]
+      link_list_list.append(link1)
+      link_list_list.append(link2)
+      return render_template("quiz.html",l1 = link_list_list[i],l2 = link_list_list[i+1])
+  # elif request.method == "POST":
 if __name__ == '__main__':
   app.run(debug=True)
