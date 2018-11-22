@@ -1,10 +1,11 @@
 from mongoengine import Document, StringField, ListField, IntField, ReferenceField
 
 class Answer(Document):
+    name = StringField()
     link = StringField()
     point = IntField()
 class Question(Document):
-    answer = ListField(ReferenceField(Answer))
+    question = ListField(ReferenceField(Answer))
 class PersonType(Document):
     name = StringField()
     des = StringField()
