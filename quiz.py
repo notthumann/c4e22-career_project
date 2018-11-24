@@ -7,15 +7,13 @@ class Answer(Document):
 
 class Question(Document):
     question = ListField(ReferenceField(Answer))
+
 class PersonType(Document):
     name = StringField()
     des = StringField()
     suited = StringField()
     total_points = IntField()
 
-class list(Document):
-    list_answer = ListField(DictField
-
     
     
     
@@ -32,5 +30,3 @@ class list(Document):
     
     
     
-    
-    )

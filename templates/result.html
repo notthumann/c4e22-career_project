@@ -10,11 +10,9 @@
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>QUIZ</title>
+    <title>Find your career</title>
 </head>
-<body id = body_quiz>
+<body>
     <div id = "myHeader">
         <div id = header1>
                 <div id = logo>
@@ -33,45 +31,23 @@
             <b id = bigtxt>FIND YOUR CAREER</b>
             <a href="E:\c4e22\career_project\templates\quiz.html" id = quiz> <b>DO THIS TEST</b>  </a>
         </div>
-    </div>
+    </div> 
     <div id = "myBody1">
         <div>
-            <h1 id = pem>Pick One</h1>
+            <h1 id = pem>{{ name }}</h1>
             <p id = "Intro"> 
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum, wolor sit amet consectetur adipisicing elit. Vero consequuntur laborum eveniet harum. Iusto reprehenderit quibusdam temporibus voluptate corporis, voluptates voluptatum.
+                {{ des }}
+                {{ suited }}
+                
             </p>
-        </div>   
-    </div>
-    <div id="content">
-        {% for question in question_list %}
-            {% set outer_loop = loop %}
-            {% if loop.index == 1 %}
-                <div class = quiz_image id="{{ loop.index }}">
-            {% else %}
-                <div class = quiz_image id="{{ loop.index }}" style="display: none">
-            {% endif %}
-            {% for answer in question.question %}
-                <div class="polaroid" id="answer_{{ outer_loop.index }}_{{ loop.index }}" point="{{ answer.point }}">
-                    <img src = "{{ answer.link }}" alt="image1" style = "width:450px;height:350px;">
-                    <div class="container">
-                        {% if loop.index % 2 != 0 %}
-                            <p> Picture 1</p>
-                        {% else %}
-                            <p> Picture 2</p>
-                        {% endif %}
-                    </div>
-                </div>
-            {% endfor %}
-            
-
+            <i id = made>
+                 - Made with our passion - 
+            </i>
         </div>
-        {% endfor %}
     </div>
-    <a href="/result">bam cai nay</a>
     <div id = "footer">
         <p> Tầng 6, nhà C, tòa nhà Chigamex - 22 Thành Công, Ba Đình, Hà Nội -- c4e22career@gmail.com</p>
+        
     </div>
-
-    <script src="../static/quiz.js"></script>
 </body>
 </html>

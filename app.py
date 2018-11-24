@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request
+from flask import *
 import mlab
 from quiz import *
 app = Flask(__name__)
@@ -108,26 +108,53 @@ mlab.connect()
 #       answer.save()
 #       q.update(push__question=answer)
     
+# @app.route("/result")
+# def hihi(): 
+#   return render_template("result.html")
 
-
-@app.route("/quiz")
+@app.route("/quiz", methods = ["GET", "POST"])
 def quiz():
     question_list = Question.objects()
+    person_list = PersonType.objects()
+    name = person_list[0].name
+   
+    if request.method == "GET":
     # print(question_list)
-    for i in range (10):
-        question1 = question_list[i]
-        link1 = question1.question[0].link
-        link2 = question1.question[1].link
-        return render_template("quiz.html",l1 = link1,l2 = link2)
+    # for i in range (10):
+    #     question1 = question_list[i]
+    #     link1 = question1.question[0].link
+    #     link2 = question1.question[1].link
+    #     return render_template("quiz.html",l1 = link1,l2 = link2)
     # print(question1[0])
+      return render_template("quiz.html", question_list = question_list)
+    elif request.method == "POST":
+      p = request.form['javascript_data']
+      print(p)
+      return redirect('/result')
+      if 0 <= int(p) <= person_list[0].total_points:
+        print(person_list[0].name)
+        print(person_list[0].des)
+        print(person_list[0].suited)
+        print("abc")
+        return "abc"
+        # return render_template("result.html",name = person_list[0].name, des = person_list[0].des, suited = person_list[0].suited )
+        # return redirect(url_for('result', name = person_list[0].name, des = person_list[0].des, suited = person_list[0].suited))
+      else:
+        for i in range (5):
+          if person_list[i].total_points < int(p) <= person_list[i+1].total_points:
+            print(person_list[i+1].name)
+            print(person_list[i+1].des)
+            print(person_list[i+1].suited)
+            print("ABC")
+            return "ABC"
+            # return render_template("result.html",name = person_list[i+1].name, des = person_list[i+1].des, suited = person_list[i+1].suited)
+            # return redirect(url_for('result', name = person_list[0].name, des = person_list[0].des, suited = person_list[0].suited))
 
-    # link_list_list = []
-    # for i in range(0,20,2):
-    #   link1 = link_list[i]
-    #   link2 = link_list[i+1]
-    #   link_list_list.append(link1)
-    #   link_list_list.append(link2)
-  # elif request.method == "POST":
+
+@app.route('/result')
+def result():
+    print("hello")
+    return "abc"
 
 if __name__ == '__main__':
   app.run(debug=True)
